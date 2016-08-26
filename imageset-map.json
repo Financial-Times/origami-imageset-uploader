@@ -18,9 +18,5 @@
 	"podcast-logos": {
 		"scheme": "ftpodcast",
 		"pathToImages": "src"
-	},
-	"test": {
-		"scheme": "fttest",
-		"pathToImages": "src"
 	}
 }
