@@ -1,0 +1,39 @@
+{
+  "name": "origami-imageset-uploader",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Origami imageset uploadet to S3 so the Origami image server can serve them",
+  "keywords": [
+    "origami"
+  ],
+  "license": "MIT",
+  "bugs": "https://github.com/Financial-Times/origami-imageset-uploader/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Financial-Times/origami-imageset-uploader.git"
+  },
+  "engines": {
+    "node": "^6"
+  },
+  "main": "./lib/imageset-uploader.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "devDependencies": {
+    "chai": "^3",
+    "eslint": "^2",
+    "istanbul": "^0.4",
+    "konstructor-api-client": "1.0.0-alpha.3",
+    "mocha": "^2",
+    "mockery": "^1",
+    "sinon": "^1",
+    "sinon-as-promised": "^4",
+    "supertest": "^1"
+  },
+  "dependencies": {
+    "@financial-times/n-express": "^17.1.0",
+    "aws-sdk": "^2.3.9",
+    "body-parser": "^1.15.2",
+    "denodeify": "^1.2.1"
+  }
+}
