@@ -35,12 +35,12 @@ test-integration:
 
 deploy:
 	@git push https://git.heroku.com/origami-imageset-uploader.git
-	@make change-request-qa
+	# @make change-request-qa
 	@$(DONE)
 
 deploy-ci:
 	@git push git@heroku.com:origami-imageset-uploader.git
-	@make change-request-qa
+	# @make change-request-qa
 	@$(DONE)
 
 # Run tasks
