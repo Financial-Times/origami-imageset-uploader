@@ -27,8 +27,8 @@ test-unit-coverage:
 	@$(DONE)
 
 test-integration:
-	@NODE_ENV=test mocha test/integration --recursive
-	@$(DONE)
+	#@NODE_ENV=test mocha test/integration --recursive
+	#@$(DONE)
 
 # Deploy tasks
 # ------------
