@@ -3,7 +3,7 @@ include n.Makefile
 # Environment variables
 # ---------------------
 
-EXPECTED_COVERAGE = 90
+EXPECTED_COVERAGE = 80
 
 # Verify tasks
 # ------------
@@ -29,6 +29,29 @@ test-unit-coverage:
 test-integration:
 	@NODE_ENV=test mocha test/integration --recursive
 	@$(DONE)
+
+# Deploy tasks
+# ------------
+
+deploy:
+	@git push https://git.heroku.com/origami-imageset-uploader.git
+	@make change-request-qa
+	@$(DONE)
+
+deploy-ci:
+	@git push git@heroku.com:origami-imageset-uploader.git
+	@make change-request-qa
+	@$(DONE)
+
+# Run tasks
+# ---------
+
+run:
+	@npm start
+
+run-dev:
+	@nodemon --ext html,js,json index.js
+
 
 # Run tasks
 # ---------
