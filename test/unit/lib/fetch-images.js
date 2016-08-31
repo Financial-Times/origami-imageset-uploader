@@ -69,7 +69,7 @@ describe('lib/fetch-images', () => {
 
 			it('adds origin from release data', () => {
 				assert.called(child_process.exec);
-				assert.calledWith(child_process.exec, `git remote add origin ${release.url}`);
+				assert.calledWith(child_process.exec, `git remote add origin ${release.url} || true`);
 			});
 
 			it('configures sparse checkout', () => {
