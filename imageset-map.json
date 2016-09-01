@@ -1,6 +1,10 @@
 {
 	"o-icons": {
-		"scheme": "fticons",
+		"scheme": "fticon-old",
+		"pathToImages": "svg"
+	},
+	"fticons": {
+		"scheme": "fticon",
 		"pathToImages": "svg"
 	},
 	"logo-images": {
