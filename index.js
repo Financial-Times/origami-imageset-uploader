@@ -1,5 +1,9 @@
 'use strict';
 
+require('dotenv').load({
+	silent: true
+});
+
 const imagesetUploader = require('./lib/imageset-uploader.js');
 
 imagesetUploader()

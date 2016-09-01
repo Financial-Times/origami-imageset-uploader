@@ -35,6 +35,8 @@
     "@financial-times/n-express": "^17.1.0",
     "aws-sdk": "^2.3.9",
     "body-parser": "^1.15.2",
-    "denodeify": "^1.2.1"
+    "denodeify": "^1.2.1",
+    "dotenv": "^2.0.0",
+    "rimraf": "^2.5.4"
   }
 }

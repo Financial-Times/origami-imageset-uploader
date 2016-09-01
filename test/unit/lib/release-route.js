@@ -10,7 +10,7 @@ describe('lib/release-route', () => {
 	let express;
 	let fetchImages;
 	let uploadImages;
-	let fs;
+	let rimraf;
 
 	beforeEach(() => {
 		process.env.GITHUB_SECRET = 'test';
@@ -20,8 +20,8 @@ describe('lib/release-route', () => {
 		mockery.registerMock('./fetch-images', fetchImages);
 		uploadImages = require('../mock/upload-images.mock');
 		mockery.registerMock('./upload-images', uploadImages);
-		fs = require('../mock/fs.mock');
-		mockery.registerMock('fs', fs);
+		rimraf = require('../mock/rimraf.mock');
+		mockery.registerMock('rimraf', rimraf);
 		releaseRoute = require('./../../../lib/release-route');
 	});
 
@@ -78,9 +78,9 @@ describe('lib/release-route', () => {
 				});
 			});
 
-			it('should call fs.rmdir', () => {
-				assert.calledOnce(fs.rmdir);
-				assert.calledWith(fs.rmdir, path.resolve(process.env.DOWNLOAD_DIRECTORY, 'test-1'));
+			it('should call rimraf', () => {
+				assert.calledOnce(rimraf);
+				assert.calledWith(rimraf, path.resolve('tmp', process.env.DOWNLOAD_DIRECTORY, 'test-1'));
 			});
 
 			it('should respond with a 200', () => {
@@ -168,8 +168,8 @@ describe('lib/release-route', () => {
 						});
 					});
 
-					describe('fs errors', () => {
-						const fsError = 'fs failed';
+					describe('rimraf errors', () => {
+						const rimrafError = 'rimraf failed';
 
 						beforeEach((done) => {
 							// Needs resetting so the done in the other beforeEach
@@ -178,19 +178,17 @@ describe('lib/release-route', () => {
 								done();
 							});
 							uploadImages.resolves('dir');
-							fs.rmdir.callsArgWith(1, fsError);
+							rimraf.yieldsAsync(rimrafError);
 							releaseRoute.routeHandler(request, response, next);
 						});
 
-						it('should respond with an error if fs.rmdir errors', () => {
+						it('should respond with an error if rimraf errors', () => {
 							assert.calledOnce(express.mockResponse.send);
 							assert.calledOnce(express.mockResponse.status);
-							assert.calledWithExactly(express.mockResponse.send, fsError);
+							assert.calledWithExactly(express.mockResponse.send, rimrafError);
 							assert.calledWithExactly(express.mockResponse.status, 500);
 						});
 					});
-					// Not sure what's the cleanest way to stub rmdir to get it
-					// to throw an error in the callback
 				});
 			});
 		});
