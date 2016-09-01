@@ -32,7 +32,7 @@ describe('lib/fetch-images', () => {
 
 		beforeEach(() => {
 			process.chdir = sinon.stub();
-			dir = path.resolve('tmp', 'imagesets', `${imagesetMap[release.name].scheme}-${getMajorVersion(release.tag)}`);
+			dir = path.resolve('tmp', 'imagesets', `${imagesetMap[release.name].scheme}-v${getMajorVersion(release.tag)}`);
 			fetchedImages = fetchImages(release);
 		});
 
@@ -52,7 +52,7 @@ describe('lib/fetch-images', () => {
 
 			it('resolves with imageset properties', () => {
 				assert.deepEqual(imagesetProperties, {
-					dirName: `${imagesetMap[release.name].scheme}-${getMajorVersion(release.tag)}`,
+					dirName: `${imagesetMap[release.name].scheme}-v${getMajorVersion(release.tag)}`,
 					pathToImages: `${imagesetMap[release.name].pathToImages}`
 				});
 			});
