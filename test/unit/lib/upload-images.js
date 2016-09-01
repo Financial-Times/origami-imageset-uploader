@@ -61,16 +61,18 @@ describe('lib/upload-images', () => {
 
 			it('should upload all files to S3', () => {
 				assert.calledTwice(fs.createReadStream);
-				assert.calledWith(fs.createReadStream, path.resolve(fullPath, 'file1'));
-				assert.calledWith(fs.createReadStream, path.resolve(fullPath, 'file2'));
+				assert.calledWith(fs.createReadStream, path.resolve(fullPath, 'file1.png'));
+				assert.calledWith(fs.createReadStream, path.resolve(fullPath, 'file2.svg'));
 				assert.calledTwice(aws.S3.prototype.putObject);
 				assert.calledWith(aws.S3.prototype.putObject, {
-					Key: path.join('test', '1', 'file1'),
-					Body: 'stream'
+					Key: path.join('test', '1', 'file1.png'),
+					Body: 'stream',
+					ContentType: 'image/png'
 				});
 				assert.calledWith(aws.S3.prototype.putObject, {
-					Key: path.join('test', '1', 'file2'),
-					Body: 'stream'
+					Key: path.join('test', '1', 'file2.svg'),
+					Body: 'stream',
+					ContentType: 'image/svg+xml'
 				});
 			});
 		});

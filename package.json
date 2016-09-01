@@ -37,6 +37,7 @@
     "body-parser": "^1.15.2",
     "denodeify": "^1.2.1",
     "dotenv": "^2.0.0",
+    "mime-types": "^2.1.11",
     "rimraf": "^2.5.4"
   }
 }
