@@ -22,5 +22,13 @@
 	"podcast-logos": {
 		"scheme": "ftpodcast",
 		"pathToImages": "src"
+	},
+	"origami-specialist-title-logos": {
+		"scheme": "specialisttitle",
+		"pathToImages": "src"
+	},
+	"origami-brand-images": {
+		"scheme": "ftbrand",
+		"pathToImages": "src"
 	}
 }
